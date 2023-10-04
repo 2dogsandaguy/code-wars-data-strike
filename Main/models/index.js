@@ -11,7 +11,7 @@ Project.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-Comments.hasMany(User ,{
+Comments.hasMany(User, {
   foreignKey: 'user_id'
 })
 
