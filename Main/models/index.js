@@ -7,16 +7,26 @@ User.hasMany(Project, {
   onDelete: 'CASCADE'
 });
 
+User.hasMany(Comments, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+
 Project.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-Comments.hasMany(User, {
-  foreignKey: 'user_id'
-})
+Project.hasMany(Comments, {
+  foreignKey: 'project_id',
+  onDelete: 'CASCADE'
+});
+
+// Comments.belongsTo(User, {
+//   foreignKey: 'user_id'
+// })
 
 Comments.belongsTo(Project, {
   foreignKey: 'project_id'
-})
+});
 
 module.exports = { User, Project, Comments };
