@@ -36,3 +36,18 @@ header, .project:not(:last-child) {
   padding: 10px;
 }
 
+/* Added CSS classes */
+
+.link {
+  border-radius: 0.5rem;
+  background-color: #465f7a !important;
+  color: #1bbc9b !important;
+}
+
+.area-border {
+  border-radius: 1rem;
+}
+
+.link-hover:hover {
+  color: #c2daf3 !important;
+}
