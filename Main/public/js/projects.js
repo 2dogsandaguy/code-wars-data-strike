@@ -1,22 +1,31 @@
-$(document).ready(function() {
-    // Make tasks draggable
-    $('.draggable').draggable({
-      helper: 'clone', // Creates a clone of the task during drag
-    });
-  
-    // Make columns droppable
-    $('.droppable').droppable({
-      accept: '.draggable', // Allow only draggable elements to be dropped
-      drop: function(event, ui) {
-        // Handle the drop event here
-        const taskId = ui.helper.attr('id');
-        const columnId = $(this).attr('id');
-  
-        // You can update the task status or perform other actions here
-        console.log('Dropped task', taskId, 'into column', columnId);
-      },
-    });
-  
-    // Make the project details container draggable
-    $('.project-details-container').draggable();
-  });
+ // Get all elements with the class "draggable"
+ var draggableElements = document.querySelectorAll(".draggable");
+
+ // Add drag-and-drop functionality to each draggable element
+ draggableElements.forEach(function(element) {
+   element.draggable = true;
+
+   element.addEventListener("dragstart", function(event) {
+     // Store the dragged element's ID in the dataTransfer object
+     event.dataTransfer.setData("text/plain", event.target.id);
+   });
+ });
+
+ // Add a dragover event listener to the droppable containers
+ var droppableContainers = document.querySelectorAll(".droppable");
+ droppableContainers.forEach(function(container) {
+   container.addEventListener("dragover", function(event) {
+     event.preventDefault(); // Prevent the default behavior of the dragged element
+   });
+
+   container.addEventListener("drop", function(event) {
+     event.preventDefault(); // Prevent the default behavior of the dragged element
+
+     // Get the dragged element's ID from the dataTransfer object
+     var draggedElementId = event.dataTransfer.getData("text/plain");
+
+     // Append the dragged element to the droppable container
+     var draggedElement = document.getElementById(draggedElementId);
+     container.appendChild(draggedElement);
+   });
+ });
