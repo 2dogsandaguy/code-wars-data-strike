@@ -17,7 +17,9 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace('/profile');
     } else {
-      alert(response.statusText);
+      const error = await response.json();
+      alert(error.message);
+      console.log(error);
     }
   }
 };
@@ -39,7 +41,14 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/profile');
     } else {
-      alert(response.statusText);
+      const error = await response.json();
+      let message = '';
+      if (error.errors.length) {
+        error.errors.forEach(element => {
+          message += element.message + "\n"
+        });
+      }
+      alert(message || error.message);
     }
   }
 };
