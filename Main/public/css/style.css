@@ -38,14 +38,22 @@ header, .project:not(:last-child) {
 
 /* Added CSS classes */
 
+.area-border {
+  border-radius: 1rem;
+}
+
+.current-projects {
+  border: 1px solid #c2daf3 !important;
+}
+
+.profile-description {
+  color: #1bbc9b !important;
+}
+
 .link {
   border-radius: 0.5rem;
   background-color: #465f7a !important;
   color: #1bbc9b !important;
-}
-
-.area-border {
-  border-radius: 1rem;
 }
 
 .link-hover:hover {
