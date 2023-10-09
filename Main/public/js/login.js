@@ -45,7 +45,12 @@ const signupFormHandler = async (event) => {
       let message = '';
       if (error.errors.length) {
         error.errors.forEach(element => {
-          message += element.message + "\n"
+          if (element.path.includes("email")) {
+            message += "Please enter a valid email address" + "\n"
+          }
+          if (element.path.includes("password")) {
+            message += "Please enter a valid password" + "\n"
+          }
         });
       }
       alert(message || error.message);
