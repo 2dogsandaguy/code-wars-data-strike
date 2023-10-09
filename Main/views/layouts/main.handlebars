@@ -7,7 +7,7 @@
   <title>Fund My Project!</title>
   <!-- Include Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <
+  
   <!-- Include jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   
@@ -23,13 +23,14 @@
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Death star Manger!</a>
+        <img src="/images/death_star.png" alt="death_star">
+        <a href="/">Death Star Task Manger!</a>
       </h1>
+      
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
+        <a href="/profile">profile</a>
         <button class="no-button" id="logout">logout</button>
         {{!-- {{else}}
         <a href="/login">login</a> --}}
