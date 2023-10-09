@@ -36,3 +36,23 @@ header, .project:not(:last-child) {
   padding: 10px;
 }
 
+/* Highlight colors */
+.highlight-blue {
+  background-color: #007bff; /* Blue */
+  opacity: 0.7;
+}
+
+.highlight-green {
+  background-color: #28a745; /* Green */
+  opacity: 0.7;
+}
+
+.highlight-yellow {
+  background-color: #ffc107; /* Yellow */
+  opacity: 0.7;
+}
+
+.highlight-red {
+  background-color: #dc3545; /* Red */
+  opacity: 0.7;
+}
