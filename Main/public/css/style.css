@@ -43,16 +43,45 @@ body {
   padding: 10px;
 }
 
+/* Highlight colors */
+.highlight-blue {
+  background-color: #007bff; /* Blue */
+  opacity: 0.7;
+}
+
+.highlight-green {
+  background-color: #28a745; /* Green */
+  opacity: 0.7;
+}
+
+.highlight-yellow {
+  background-color: #ffc107; /* Yellow */
+  opacity: 0.7;
+}
+
+.highlight-red {
+  background-color: #dc3545; /* Red */
+  opacity: 0.7;
+}
+
 /* Added CSS classes */
+
+.area-border {
+  border-radius: 1rem;
+}
+
+.current-projects {
+  border: 1px solid #c2daf3 !important;
+}
+
+.profile-description {
+  color: #1bbc9b !important;
+}
 
 .link {
   border-radius: 0.5rem;
   background-color: #465f7a !important;
   color: #1bbc9b !important;
-}
-
-.area-border {
-  border-radius: 1rem;
 }
 
 .link-hover:hover {
@@ -72,9 +101,4 @@ body {
 .star-wars-header h1 a {
   color: black; /* Set the text color to black */
 }
-
-
-
-
-
 
