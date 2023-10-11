@@ -2,6 +2,13 @@ header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
 
+/* Apply background image to the body */
+body {
+  background-image: url('/public/images/deathstar.jpg'); /* Replace with your image path */
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-repeat: no-repeat; /* Prevent image repetition */
+}
+
 .no-button {
   background: none;
   border: none;
@@ -51,3 +58,23 @@ header, .project:not(:last-child) {
 .link-hover:hover {
   color: #c2daf3 !important;
 }
+
+/* Added more CSS classes */
+
+.star-wars-header {
+  background-color: red; /* Set your desired background color */
+  padding: 10px; /* Add padding for spacing */
+  color: black; /* Set text color to white for contrast */
+  text-align: center; /* Center-align text */
+}
+
+/* Change the text color of the header to black */
+.star-wars-header h1 a {
+  color: black; /* Set the text color to black */
+}
+
+
+
+
+
+

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund My Project!</title>
+  <title>Star Wars Task Manager!</title>
   <!-- Include Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   
@@ -21,17 +21,17 @@
 
 <body>
   <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
+    <header class="display-flex justify-space-between align-center p-2 star-wars-header">
       <h1>
         <img src="/images/death_star.png" alt="death_star">
-        <a href="/">Death Star Task Manger!</a>
+        <a href="/">Death Star Task Manager!</a>
       </h1>
       
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a class="star-wars-header" href="/profile">profile</a> |
+        <button class="no-button star-wars-header" id="logout">logout</button>
         {{!-- {{else}}
         <a href="/login">login</a> --}}
         {{/if}}
