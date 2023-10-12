@@ -71,22 +71,29 @@ $(document).ready(function() {
           // Clear input fields
           $("#newTask").val("");
           $("#newTaskDescription").val("");
-
-      
-        var todoTemplate = $("#todo-task-template").html();
-        console.log("Todo template:", todoTemplate);
-        console.log("data", data)
-        var newTask = {
-          id: data.id,
-          task_name: data.name,
-          task_description: data.description
-        };
-        console.log(newTask)
-        // Append the new task to the "To Do" column
-        $("#todo-column").append(todoTemplate/* (newTask) */);
-      },
-        error: function (err) {
-          console.error(err);
+        
+          var newTask = {
+            id: data.id,
+            task_name: data.name,
+            task_description: data.description
+          };
+          console.log(newTask)
+        
+          // Create the HTML for the new task
+          var taskHtml = `
+            <div class="card draggable mb-3" id="task${newTask.id}">
+              <div class="card-body">
+                <h5 class="card-title">${newTask.task_name}</h5>
+                <p class="card-text">${newTask.task_description}</p>
+              </div>
+            </div>
+          `;
+        
+          // Append the new task to the "To Do" column
+          $("#todo-column").append(taskHtml);
+        
+          // Make the new task draggable
+          addDragAndDrop($("#task" + newTask.id));
         },
       });
     }
