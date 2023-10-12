@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project, User, Comments } = require('../models');
+const { Project, User, Comments, Task } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -41,11 +41,24 @@ router.get('/project/:id', async (req, res) => {
         }
       ]
     });
+    const tasks = await Task.findAll({
+      where: {
+          project_id: req.params.id,
+        },
+      raw:true
+    })
+   
+    
+
 
     const project = projectData.get({ plain: true });
 
+
     res.render('project', {
-      ...project,
+      project,
+      todoTasks:tasks.filter(task => task.status == "To Do"),
+      inProgressTasks:tasks.filter(task => task.status == "in Progress"),
+      doneTasks: tasks.filter(task => task.status == "Done"),
       logged_in: req.session.logged_in
     });
   } catch (err) {
