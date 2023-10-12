@@ -4,9 +4,10 @@ header, .project:not(:last-child) {
 
 /* Apply background image to the body */
 body {
-  background-image: url('/public/images/deathstar.jpg'); /* Replace with your image path */
+  background-image: url('../images/death_star_space.webp'); /* Replace with your image path */
   background-size: cover; /* Ensure the image covers the entire background */
   background-repeat: no-repeat; /* Prevent image repetition */
+  opacity: 0.8;
 }
 
 .no-button {
@@ -95,6 +96,7 @@ body {
   padding: 10px; /* Add padding for spacing */
   color: black; /* Set text color to white for contrast */
   text-align: center; /* Center-align text */
+  font-size: 24px;
 }
 
 /* Change the text color of the header to black */
