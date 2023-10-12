@@ -48,33 +48,47 @@ $(document).ready(function() {
     });
   });
   
-  $("#createTask").on("click", function() {
-    var newTaskName = $("#newTask").val().trim();
-    var newTaskDescription = $("#newTaskDescription").val().trim();
-
+  $("#createTask").on("click", function () {
+    console.log("Create button clicked"); // Debugging line
+    const projectId = $(this).data("project");
+    console.log("project id", projectId);
+    const newTaskName = $("#newTask").val().trim();
+    const newTaskDescription = $("#newTaskDescription").val().trim();
+    console.log("Task name:", newTaskName); // Debugging line
+    console.log("Task description:", newTaskDescription); // Debugging line
+  
     if (newTaskName !== "") {
-      var newTaskId = "task" + ($(".draggable").length + 1);
+      $.ajax({
+        url: `/api/projects/${projectId}/tasks`,
+        method: "POST",
+        data: {
+          name: newTaskName,
+          description: newTaskDescription,
+        },
+        
+        success: function (data) {
+          console.log("AJAX Success Function Executed");
+          // Clear input fields
+          $("#newTask").val("");
+          $("#newTaskDescription").val("");
 
-      // Create a new task element with Bootstrap card styling and description
-      var newTaskElement = $("<div>")
-        .addClass("draggable card mb-3")
-        .attr("id", newTaskId)
-        .html(
-          '<div class="card-body">' +
-            '<h5 class="card-title">' + newTaskName + ' <a href="#" class="toggle-description">+</a></h5>' +
-            '<p class="card-description d-none">' + newTaskDescription + '</p>' +
-          '</div>'
-        );
- 
-      // Add drag-and-drop functionality to the new task
-      addDragAndDrop(newTaskElement);
-
-      // Append the new task to the "To Do" column by default
-      $("#todo-column").append(newTaskElement);
-
-      // Clear the input fields
-      $("#newTask").val("");
-      $("#newTaskDescription").val("");
+      
+        var todoTemplate = $("#todo-task-template").html();
+        console.log("Todo template:", todoTemplate);
+        console.log("data", data)
+        var newTask = {
+          id: data.id,
+          task_name: data.name,
+          task_description: data.description
+        };
+        console.log(newTask)
+        // Append the new task to the "To Do" column
+        $("#todo-column").append(todoTemplate/* (newTask) */);
+      },
+        error: function (err) {
+          console.error(err);
+        },
+      });
     }
   });
 });

@@ -1,40 +1,44 @@
-<body>
+<h1>help me {{project.description}}</h1>
   <div class="container mt-5">
     <div class="row">
       <!-- Create Task Column -->
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Create Task</h5>
-          <div class="form-group">
-            <input type="text" class="form-control" id="newTask" placeholder="Enter task name">
-          </div>
-          <div class="form-group">
-            <textarea class="form-control" id="newTaskDescription" placeholder="Enter task description"></textarea>
-          </div>
-          <button id="createTask" class="btn btn-primary">Create</button>
-        </div>
-      </div>
-    </div>
-
-      <!-- Column 1: To Do -->
-      <div class="col-md-4">
-        <div class="card mb-3">
-          <div class="card-header bg-primary text-white">
-            To Do
-          </div>
-          <div class="card-body droppable" id="todo-column">
-            <!-- Kanban board code goes here -->
-            <div class="card draggable mb-3" id="task1">
-              <div class="card-body">
-                <h5 class="card-title">Task 1</h5>
-                <p class="card-text">Task description goes here.</p>
-              </div>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Create Task</h5>
+            <div class="form-group">
+              <input type="text" class="form-control" id="newTask" placeholder="Enter task name">
             </div>
-            <!-- Add more tasks here if needed -->
+            <div class="form-group">
+              <textarea class="form-control" id="newTaskDescription" placeholder="Enter task description"></textarea>
+            </div>
+            <button data-project={{project.id}} id="createTask" class="btn btn-primary">Create</button>
           </div>
         </div>
       </div>
+{{log todoTasks}}
+<!-- Column 1: To Do -->
+<div class="col-md-4">
+  <div class="card mb-3">
+    <div class="card-header bg-primary text-white">
+      To Do
+    </div>
+    <div class="card-body droppable" id="todo-column">
+      <!-- Handlebars template for To Do tasks -->
+    
+        {{#each todoTasks}}
+        <div class="card draggable mb-3" id="task{{id}}">
+          <div class="card-body">
+            <h5 class="card-title">{{name}}</h5>
+            <p class="card-text">{{description}}</p>
+          </div>
+        </div>
+        {{/each}}
+
+    </div>
+  </div>
+</div>
+
 
       <!-- Column 2: In Progress -->
       <div class="col-md-4">
@@ -43,14 +47,17 @@
             In Progress
           </div>
           <div class="card-body droppable" id="inprogress-column">
-            <!-- Kanban board code goes here -->
-            <div class="card draggable mb-3" id="task3">
-              <div class="card-body">
-                <h5 class="card-title">Task 3</h5>
-                <p class="card-text">Task description goes here.</p>
+            <!-- Handlebars template for In Progress tasks -->
+            <script id="inprogress-task-template" type="text/x-handlebars-template">
+              {{#each inProgressTasks}}
+              <div class="card draggable mb-3" id="task{{id}}">
+                <div class="card-body">
+                  <h5 class="card-title">{{task_name}}</h5>
+                  <p class="card-text">{{task_description}}</p>
+                </div>
               </div>
-            </div>
-            <!-- Add more tasks here  if needed -->
+              {{/each}}
+            </script>
           </div>
         </div>
       </div>
@@ -62,21 +69,21 @@
             Done
           </div>
           <div class="card-body droppable" id="done-column">
-            <!-- Kanban board code goes here  -->
-            <div class="card draggable mb-3" id="task5">
-              <div class="card-body">
-                <h5 class="card-title">Task 5</h5>
-                <p class="card-text">Task description goes here.</p>
+            <!-- Handlebars template for Done tasks -->
+            <script id="done-task-template" type="text/x-handlebars-template">
+              {{#each doneTasks}}
+              <div class="card draggable mb-3" id="task{{id}}">
+                <div class="card-body">
+                  <h5 class="card-title">{{task_name}}</h5>
+                  <p class="card-text">{{task_description}}</p>
+                </div>
               </div>
-            </div>
-            <!-- Add more tasks here if needed -->
+              {{/each}}
+            </script>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-
-
   <script src="/js/projects.js"></script>
-</body>

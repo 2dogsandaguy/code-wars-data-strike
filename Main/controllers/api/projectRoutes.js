@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project } = require('../../models');
+const { Project , Task } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
@@ -14,7 +14,32 @@ router.post('/', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
+//rf  
+router.post('/:id/tasks', withAuth, async (req, res) => {
+  try {
+    const newTask = await Task.create({
+      name: req.body.name,
+      description: req.body.description,
+      project_id: req.params.id,
+    });
 
+    res.status(200).json(newTask);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.get('/:id/tasks', async (req, res) => {
+  try {
+    const tasks = await Task.findAll({
+      where: { project_id: req.params.id },
+    });
+
+    res.status(200).json(tasks);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const projectData = await Project.destroy({
@@ -35,4 +60,4 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = router ;
