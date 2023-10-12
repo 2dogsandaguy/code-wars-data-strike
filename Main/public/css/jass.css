@@ -373,6 +373,8 @@ h6 {
 
 h1 {
   font-size: 2.25rem;
+  color: white;
+  text-align: center;
 }
 
 h2 {
@@ -1250,6 +1252,7 @@ form [type='radio'] {
 }
 
 .row {
+  border-radius: 25px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
