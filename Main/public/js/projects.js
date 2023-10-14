@@ -19,11 +19,24 @@ $(document).ready(function() {
     update: function(event, ui) {
       // Handle task reordering or moving between columns here
       var taskId = ui.item.attr("id");
+      // GET project id for local storage  to var 
       var newColumnId = ui.item.closest(".droppable").attr("id");
-
+      const projectId = localStorage.getItem("projectID");
       // You can update task status or perform other actions here
       console.log("Task ID:", taskId);
       console.log("New Column ID:", newColumnId);
+      $.ajax({
+        url: `/api/projects/${projectId}/tasks/update/${taskId}`,
+        method: "POST",
+        data: {
+              projectId: projectId,
+              newColumnId: newColumnId,
+        },
+        
+        success: function (data) {
+          console.log("task item updated" , taskId,newColumnId);          
+        },
+      });
     },
   });
 
