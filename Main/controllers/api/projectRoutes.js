@@ -15,8 +15,9 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 //rf  
-router.post('/:id/tasks', withAuth, async (req, res) => {
+router.post('/:id/tasks', async (req, res) => {
   try {
+    console.log(req.params.id ,"tasks posted");
     const newTask = await Task.create({
       name: req.body.name,
       description: req.body.description,
@@ -28,6 +29,25 @@ router.post('/:id/tasks', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+
+
+router.post('/:id/tasks/update/:taskId', async (req, res) => {
+  try {
+    /* console.log("Task update",req.params.id) */
+    console.log("TaskId",req.params.taskId)
+    console.log("project Id",req.params.id)
+    console.log("",req.body)
+
+
+  }catch{
+    (err) 
+      res.status(500).json(err);
+  }
+})
+
+
+
 
 router.get('/:id/tasks', async (req, res) => {
   try {
