@@ -21,6 +21,7 @@
     "mysql2": "^2.2.5",
     "nodemon": "^3.0.1",
     "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
     "seed": "^0.4.4",
     "sequelize": "^6.3.5"
     
