@@ -1,3 +1,13 @@
+const projectLinkHandler = (event) => {
+  if(event.target.classList.contains('project-link')) {
+    console.log("this code is running")
+    let projectId = event.target.getAttribute('data-id');
+    localStorage.setItem('projectID', "projectId");
+    localStorage.setItem('projectID', projectId);
+  }
+};
+
+
 const newFormHandler = async (event) => {
   event.preventDefault();
 
@@ -22,6 +32,7 @@ const newFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
+  console.log("deleting project")
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
@@ -42,5 +53,9 @@ document
   .addEventListener('submit', newFormHandler);
 
 document
-  .querySelector('.project-list')
+  .querySelector('.btn-danger')
   .addEventListener('click', delButtonHandler);
+
+  document
+  .querySelector('.project-list')
+  .addEventListener('click', projectLinkHandler);
