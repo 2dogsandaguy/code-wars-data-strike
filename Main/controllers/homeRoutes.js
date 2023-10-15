@@ -56,9 +56,9 @@ router.get('/project/:id', async (req, res) => {
 
     res.render('project', {
       project,
-      todoTasks:tasks.filter(task => task.status == "To Do"),
-      inProgressTasks:tasks.filter(task => task.status == "in Progress"),
-      doneTasks: tasks.filter(task => task.status == "Done"),
+      todoTasks:tasks.filter(task => task.status === "To Do"),
+      inProgressTasks:tasks.filter(task => task.status === "in Progress"),
+      doneTasks: tasks.filter(task => task.status === "Done"),
       logged_in: req.session.logged_in
     });
   } catch (err) {
