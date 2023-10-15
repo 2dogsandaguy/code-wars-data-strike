@@ -1,5 +1,5 @@
-<h1>PROJECT </h1>  
-  <h1>{{project.description}}</h1>
+<h1>PROJECT </h1>
+<h1>{{project.description}}</h1>
 <div class="container mt-5">
   <div class="row">
     <!-- Create Task Column -->
@@ -19,69 +19,69 @@
     </div>
     {{log todoTasks}}
 
-<!-- Column 1: To Do -->
-<div class="col-md-4">
-  <div class="card mb-3">
-    <div class="card-header bg-primary text-white">
-      To Do
-    </div>
-    <div class="card-body droppable" id="todo-column">
-      <!-- Handlebars template for To Do tasks -->
-      {{#each todoTasks}}
-      <div class="card draggable mb-3" id="task{{id}}" data-task-id="{{id}}" >
-        <div class="card-body" id="todo-column">
-          <h5 class="card-title">{{name}}</h5>
-          <p class="card-text">{{description}}</p>
+    <!-- Column 1: To Do -->
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <div class="card-header bg-primary text-white">
+          To Do
+        </div>
+        <div class="card-body droppable" id="todo-column">
+          <!-- Handlebars template for To Do tasks -->
+          {{#each todoTasks}}
+          <div class="card draggable mb-3" id="task{{id}}" data-task-id="{{id}}">
+            <div class="card-body" id="todo-column">
+              <h5 class="card-title">{{name}}</h5>
+              <p class="card-text">{{description}}</p>
+            </div>
+          </div>
+          {{/each}}
         </div>
       </div>
-      {{/each}}
     </div>
-  </div>
-</div>
 
-<!-- Column 2: In Progress -->
-<div class="col-md-4">
-  <div class="card mb-3">
-    <div class="card-header bg-warning text-white">
-      In Progress
-    </div>
-    <div class="card-body droppable" id="inprogress-column">
-      <!-- Handlebars template for In Progress tasks -->
-      {{#each inProgressTasks}}
-      {{#if (eq status 'In Progress')}}
-      <div class="card draggable mb-3" id="task{{id}}" data-task-id="{{id}}">
-        <div class="card-body">
-          <h5 class="card-title">{{name}}</h5>
-          <p class="card-text">{{description}}</p>
+    <!-- Column 2: In Progress -->
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <div class="card-header bg-warning text-white">
+          In Progress
+        </div>
+        <div class="card-body droppable" id="inprogress-column">
+          <!-- Handlebars template for In Progress tasks -->
+          {{#each inProgressTasks}}
+          {{#if (eq status 'In Progress')}}
+          <div class="card draggable mb-3" id="task{{id}}" data-task-id="{{id}}">
+            <div class="card-body">
+              <h5 class="card-title">{{name}}</h5>
+              <p class="card-text">{{description}}</p>
+            </div>
+          </div>
+          {{/if}}
+          {{/each}}
         </div>
       </div>
-      {{/if}}
-      {{/each}}
     </div>
-  </div>
-</div>
 
-<!-- Column 3: Done -->
-<div class="col-md-4">
-  <div class "card mb-3">
-    <div class="card-header bg-success text-white">
-      Done
-    </div>
-    <div class="card-body droppable" id="done-column">
-      <!-- Handlebars template for Done tasks -->
-      {{#each doneTasks}}
-      {{#if (eq status 'Done')}}
-      <div class="card draggable mb-3" id="task{{id}}" data-task-id="{{id}}">
-        <div class="card-body">
-          <h5 class="card-title">{{name}}</h5>
-          <p class="card-text">{{description}}</p>
+    <!-- Column 3: Done -->
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <div class="card-header bg-success text-white">
+          Done
+        </div>
+        <div class="card-body droppable" id="done-column">
+          <!-- Handlebars template for Done tasks -->
+          {{#each doneTasks}}
+          {{#if (eq status 'Done')}}
+          <div class="card draggable mb-3" id="task{{id}}" data-task-id="{{id}}">
+            <div class="card-body">
+              <h5 class="card-title">{{name}}</h5>
+              <p class="card-text">{{description}}</p>
+            </div>
+          </div>
+          {{/if}}
+          {{/each}}
         </div>
       </div>
-      {{/if}}
-      {{/each}}
     </div>
-  </div>
-</div>
 
 
-<script src="/js/projects.js"></script>
+    <script src="/js/projects.js"></script>
