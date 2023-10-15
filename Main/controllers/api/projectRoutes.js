@@ -15,7 +15,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 //rf  
-router.post('/:id/tasks', async (req, res) => {
+router.post('/:id/tasks', withAuth ,async (req, res) => {
   try {
     console.log(req.params.id ,"tasks posted");
     const newTask = await Task.create({
@@ -32,19 +32,51 @@ router.post('/:id/tasks', async (req, res) => {
 
 
 
-router.post('/:id/tasks/update/:taskId', async (req, res) => {
+/* router.post('/:id/tasks/update/:taskId', async (req, res) => {
   try {
     /* console.log("Task update",req.params.id) */
-    console.log("TaskId",req.params.taskId)
+/*     console.log("TaskId",req.params.taskId)
     console.log("project Id",req.params.id)
-    console.log("",req.body)
+    console.log("",req.body) */
 
-
+/* 
   }catch{
     (err) 
       res.status(500).json(err);
   }
-})
+}) */ 
+router.post('/:id/tasks/update/:taskId', async (req, res) => {
+  try {
+    const projectId = req.params.id;
+    const taskId = req.params.taskId;
+    const newColumnId = req.body.newColumnId;
+    
+    
+    // Assuming you have a "status" column in your Task model to represent the column/status
+    const updatedTask = await Task.update(
+      { status: newColumnId }, // Use newColumnId as a string here
+      {
+        where: { id: taskId, project_id: projectId },
+      }
+    );
+
+    if (updatedTask[0] === 0) {
+      // If no rows were updated, it means the task doesn't exist or the status didn't change.
+      return res.status(400).json({ message: 'Task not found or status did not change.' });
+    }
+    if (!newColumnId) {
+      return res.status(400).json({ error: 'New column ID is missing.' });
+    }
+
+    // Task status was updated successfully
+    res.status(200).json({ message: 'Task updated successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
 
 
 
