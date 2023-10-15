@@ -59,8 +59,9 @@ router.post('/:id/tasks/update/:taskId', async (req, res) => {
         where: { id: taskId, project_id: projectId },
       }
     );
+    console.log(updatedTask);
 
-    if (updatedTask[0] === 0) {
+    if (updatedTask[1] === 0) {
       // If no rows were updated, it means the task doesn't exist or the status didn't change.
       return res.status(400).json({ message: 'Task not found or status did not change.' });
     }
