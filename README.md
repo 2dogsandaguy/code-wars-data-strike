@@ -36,7 +36,7 @@
 - https://github.com/2dogsandaguy/code-wars-data-strike
 
 ## Heroku
--
+- http://fierce-plateau-02428-54755b726de9.herokuapp.com/
 
 ## Contributors
 - Brent Knox, Tristan Livengood, Rob Frisco, Kris Hinojosa
