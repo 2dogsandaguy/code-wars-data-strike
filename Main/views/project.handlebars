@@ -61,27 +61,26 @@
       </div>
     </div>
 
-    <!-- Column 3: Done -->
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <div class="card-header bg-success text-white">
-          Done
-        </div>
-        <div class="card-body droppable" id="done-column">
-          <!-- Handlebars template for Done tasks -->
-          {{#each doneTasks}}
-          {{#if (eq status 'Done')}}
-          <div class="card draggable mb-3" id="task{{id}}" data-task-id="{{id}}">
-            <div class="card-body">
-              <h5 class="card-title">{{name}}</h5>
-              <p class="card-text">{{description}}</p>
-            </div>
-          </div>
-          {{/if}}
-          {{/each}}
+<!-- Column 3: Done -->
+<div class="col-md-4">
+  <div class="card mb-3">
+    <div class="card-header bg-success text-white">
+      Done
+    </div>
+    <div class="card-body droppable" id="done-column">
+      <!-- Handlebars template for Done tasks -->
+      {{#each doneTasks}}
+      <div class="card draggable mb-3" id="task{{id}}" data-task-id="{{id}}">
+        <div class="card-body">
+          <h5 class="card-title">{{name}}</h5>
+          <p class="card-text">{{description}}</p>
+          <button class="btn btn-danger delete-task" data-task-id="{{id}}">Delete</button>
         </div>
       </div>
+      {{/each}}
     </div>
+  </div>
+</div>
 
 
     <script src="/js/projects.js"></script>
