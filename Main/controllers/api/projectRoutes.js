@@ -30,25 +30,21 @@ router.post('/:id/tasks', withAuth ,async (req, res) => {
   }
 });
 
-router.delete('/:projectId/tasks/:taskId', withAuth, async (req, res) => {
+
+
+/* router.post('/:id/tasks/update/:taskId', async (req, res) => {
   try {
-    const { projectId, taskId } = req.params;
+    /* console.log("Task update",req.params.id) */
+/*     console.log("TaskId",req.params.taskId)
+    console.log("project Id",req.params.id)
+    console.log("",req.body) */
 
-    // Check if the task belongs to the project and the user
-    const task = await Task.findOne({
-      where: { id: taskId, project_id: projectId },
-    });
-
-    if (!task) {
-      return res.status(404).json({ message: 'Task not found' });
-    }
-
-    await task.destroy();
-    res.status(204).end();
-  } catch (err) {
-    res.status(500).json(err);
+/* 
+  }catch{
+    (err) 
+      res.status(500).json(err);
   }
-});
+}) */ 
 router.post('/:id/tasks/update/:taskId', async (req, res) => {
   try {
     const projectId = req.params.id;
