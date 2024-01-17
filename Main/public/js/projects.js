@@ -135,21 +135,4 @@ $(document).ready(function () {
       });
     }
   });
-  $(".delete-task").on("click", function () {
-    const taskId = $(this).data("task-id");
-    const projectId = localStorage.getItem("projectID");
-  
-    $.ajax({
-      url: `/api/projects/${projectId}/tasks/${taskId}`,
-      method: "DELETE",
-      success: function () {
-        // Remove the task from the DOM
-        $(`#task${taskId}`).remove();
-      },
-      error: function (xhr, status, error) {
-        console.error(error);
-      }
-    });
-  });
-
 });
